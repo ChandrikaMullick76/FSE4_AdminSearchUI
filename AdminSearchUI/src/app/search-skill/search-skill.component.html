@@ -1,17 +1,39 @@
 <p>search-skill works!</p>
 <div >
-    <table>
-        <tr>
+    <form #userForm="ngForm" (ngSubmit)="onFormSubmit(userForm)">
+        <table>
+           <tr> 
+             <td>
+                 <input type="radio" value="NAME" name="criteria" [ngModel]="txtCriteria" required #criteria="ngModel"> Name :
+             <td>
+             <td>
+                <input name="uname" [ngModel]="txtName" required #uname="ngModel">
+                 <!--<div *ngIf="uname.invalid && userForm.submitted && !isValidFormSubmitted" [ngClass] = "'error'"> 
+                    Name required. 
+                 </div>-->
+             </td>
+           </tr> 
+           <tr> 
             <td>
-            <B>Name: </B><br/>
-            <B>AssociateId: </B><br/>
-            <B>Email: </B><br/>
+                <input type="radio" value="ASSOCIATEID" name="criteria" [ngModel]="txtCriteria" required #criteria="ngModel"> AssociateId :
+            <td>
+            <td>
+               <input name="uassociateid" [ngModel]="txtassociateid" required #uassociateid="ngModel">
+                <!--<div *ngIf="uname.invalid && userForm.submitted && !isValidFormSubmitted" [ngClass] = "'error'"> 
+                   Name required. 
+                </div>-->
             </td>
-        </tr>
-</table>
+          </tr> 	 
+           <tr> 	  
+             <td colspan="2">
+                    <button>Submit</button>   	  
+             </td>
+           </tr>	   
+        </table>  
+      </form> 
 <br/>
 </div>
-<button mat-flat-button color="primary"  (click)="SearchSkill()">Search</button>
+
 <br/>
 <div>
     <table class="table table-bordered" width="800">

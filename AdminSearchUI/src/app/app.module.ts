@@ -6,6 +6,7 @@ import { AppComponent } from './app.component';
 import { SearchSkillComponent } from './search-skill/search-skill.component';
 import { TestComponent } from './test/test.component';
 import { SearchAdminService } from './shared/search-admin.service';
+import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 @NgModule({
   declarations: [
     AppComponent,
@@ -15,7 +16,9 @@ import { SearchAdminService } from './shared/search-admin.service';
   imports: [
     BrowserModule,
     AppRoutingModule,
-    HttpClientModule
+    HttpClientModule,
+    ReactiveFormsModule,
+    FormsModule
   ],
   providers: [SearchAdminService],
   bootstrap: [AppComponent]
