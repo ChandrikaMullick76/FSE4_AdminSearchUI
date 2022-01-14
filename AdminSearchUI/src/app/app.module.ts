@@ -5,6 +5,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { SearchSkillComponent } from './search-skill/search-skill.component';
 import { TestComponent } from './test/test.component';
+import { SearchAdminService } from './shared/search-admin.service';
 @NgModule({
   declarations: [
     AppComponent,
@@ -16,7 +17,7 @@ import { TestComponent } from './test/test.component';
     AppRoutingModule,
     HttpClientModule
   ],
-  providers: [],
+  providers: [SearchAdminService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

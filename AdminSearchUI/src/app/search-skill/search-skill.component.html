@@ -1,2 +1,48 @@
 <p>search-skill works!</p>
-
+<div >
+    <table>
+        <tr>
+            <td>
+            <B>Name: </B><br/>
+            <B>AssociateId: </B><br/>
+            <B>Email: </B><br/>
+            </td>
+        </tr>
+</table>
+<br/>
+</div>
+<button mat-flat-button color="primary"  (click)="SearchSkill()">Search</button>
+<br/>
+<div>
+    <table class="table table-bordered" width="800">
+        <tr *ngFor="let user of userlist">
+            <td [width]="300">
+                    <B>Name: </B>{{user.name}}<br/>
+                    <B>AssociateId: </B>{{user.associateId}}<br/>
+                    <B>Email: </B>{{user.email}}<br/>
+                    <B>Mobile: </B>{{user.mobile}}<br/>
+                   
+            </td>           
+            <td [width]="300">
+                <B>Htmlcssjavascript: </B>{{user.htmlcssjavascript}}<br/>
+                <B>Angular: </B>{{user.angular}}<br/>
+                <B>React: </B>{{user.react}}<br/>
+                <B>AspNetCore: </B>{{user.aspNetCore}}<br/>
+                <B>Restful: </B>{{user.restful}}<br/>
+                <B>EntityFramework: </B>{{user.entityFramework}}<br/>
+                <B>Git: </B>{{user.git}}<br/>
+                <B>Docker: </B>{{user.docker}}<br/>
+                <B>Jenkins: </B>{{user.jenkins}}<br/>
+                <B>Azure: </B>{{user.azure}}<br/>
+            </td> 
+            <td>
+                <B>Spoken: </B>{{user.spoken}}<br/>
+                <B>Communication: </B>{{user.communication}}<br/>
+                <B>Aptitude: </B>{{user.aptitude}}<br/>
+                <B>CreationDate: </B>{{user.creationDate}}<br/>
+              
+            </td>   
+            </tr> 
+            <tr><td colspan="3"><hr></td></tr> 
+        </table>
+    </div>

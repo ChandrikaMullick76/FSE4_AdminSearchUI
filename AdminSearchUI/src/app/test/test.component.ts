@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { SearchAdmin } from '../shared/search-admin.model';
 import { Router } from "@angular/router";
 import { SearchAdminService } from '../shared/search-admin.service';
-
+import { HttpClient } from "@angular/common/http";
 
 @Component({
   selector: 'app-test',
@@ -11,21 +11,18 @@ import { SearchAdminService } from '../shared/search-admin.service';
   ]
 })
 export class TestComponent implements OnInit {
-  userlist: any;
+  public userlist: SearchAdmin[];
   public testid:string="6";
+  
  
-  constructor(public service : SearchAdminService) {    
+  constructor(public http: HttpClient,public service : SearchAdminService) {    
     this.userlist = [];
   }
 
   ngOnInit(): void {
-    this.service.GetSkillList().subscribe((data: any) => {
-      this.testid=data[0].Name;
-      //debugger;
-      //data.forEach((val: any) => { this.userlist.push(new SearchAdmin(val)) });      
-    });
-    console.log("Data called");
-    console.log(this.testid);
+    this.service.GetSkillList().subscribe(data => this.userlist = data);  
+    console.log("userlist"); 
+    console.log(this.userlist);   
   }
 
 }

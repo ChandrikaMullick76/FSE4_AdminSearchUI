@@ -1,19 +1,23 @@
-import { Injectable } from '@angular/core';
 import { SearchAdmin } from './search-admin.model';
-import { HttpClient } from "@angular/common/http";
+import { Injectable } from '@angular/core';
+import { HttpClient } from '@angular/common/http';
+//import * as Rx from "rxjs/Rx";
+import { from, Observable, throwError } from 'rxjs';
+//import { map, catchError } from 'rxjs/operators';
 
 @Injectable({
   providedIn: 'root'
 })
 export class SearchAdminService {
 
-  constructor(private http: HttpClient) { }
-  readonly baseURL = 'http://localhost:20539/skill-tracker/api/v1/admin';
-  
+   //list: SearchAdmin[];
+  constructor(private http: HttpClient) {  }
+ // readonly baseURL = '/assets/data/userskills.json';
+  readonly baseURL ='http://localhost:20539/skill-tracker/api/v1/engineer/GetAllUserSkillProfiles';
 
-  GetSkillList(): any {
-    debugger;     
-    return this.http.get<any>('http://localhost:20539/skill-tracker/api/v1/engineer/GetAllUserSkillProfiles');
+  GetSkillList(): Observable<SearchAdmin[]> {
+    debugger;   
+    return this.http.get<SearchAdmin[]>(this.baseURL)
   }
 
  
