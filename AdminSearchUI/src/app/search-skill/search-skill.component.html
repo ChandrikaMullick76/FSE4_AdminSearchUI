@@ -2,6 +2,11 @@
 <div >
     <form #userForm="ngForm" (ngSubmit)="onFormSubmit(userForm)">
         <table>
+            <tr><td>
+                <div *ngIf="criteria.invalid && userForm.submitted && !isValidFormSubmitted" [ngClass] = "'error'"> 
+                    Search criteria required. 
+               </div>
+            </td></tr>
            <tr> 
              <td>
                  <input type="radio" value="NAME" name="criteria" [ngModel]="txtCriteria" required #criteria="ngModel"> Name :

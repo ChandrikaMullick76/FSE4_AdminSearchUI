@@ -19,6 +19,8 @@ export class SearchSkillComponent implements OnInit {
   txtName:string='';
   txtCriteria:string='';
   txtassociateid:string='';
+  searchName:string='';
+  searchValue:string='';
  
   constructor(public http: HttpClient,public service : SearchAdminService,public fb: FormsModule) {    
     this.userlist = [];
@@ -47,7 +49,17 @@ export class SearchSkillComponent implements OnInit {
   }
 
   searchSkill():void{
-    this.service.GetSkillList().subscribe(data => this.userlist = data);  
+    if(this.txtCriteria=="NAME")
+    {
+      this.searchName="NAME";
+      this.searchValue=this.txtName;
+    }
+    else if(this.txtCriteria=="ASSOCIATEID")
+    {
+      this.searchName="ASSOCIATEID";
+      this.searchValue=this.txtassociateid;
+    }
+    this.service.GetSkillList(this.searchName,this.searchValue).subscribe(data => this.userlist = data);  
     console.log("userlist"); 
     console.log(this.userlist);  
 

@@ -20,7 +20,7 @@ export class TestComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.service.GetSkillList().subscribe(data => this.userlist = data);  
+    //this.service.GetSkillList().subscribe(data => this.userlist = data);  
     console.log("userlist"); 
     console.log(this.userlist);   
   }
