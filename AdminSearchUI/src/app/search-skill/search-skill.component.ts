@@ -19,27 +19,80 @@ export class SearchSkillComponent implements OnInit {
   txtName:string='';
   txtCriteria:string='';
   txtassociateid:string='';
+  txtSkillName:string='';
   searchName:string='';
   searchValue:string='';
+  skills: string[] = ['HTMLCSSJAVASCRIPT', 'ANGULAR', 'AspNetCore', 'REACT','RESTFUL','EntityFramework',
+  'GIT','DOCKER','JENKINS','Azure','SPOKEN','COMMUNICATION','APTITUDE'];
  
   constructor(public http: HttpClient,public service : SearchAdminService,public fb: FormsModule) {    
     this.userlist = [];
-
+    this.txtCriteria="NAME";
   }
 
   onFormSubmit(form: NgForm) {
-    /*this.isValidFormSubmitted = false;
-    if(form.invalid){
-     return;	
-    } 	*/
     this.isValidFormSubmitted = true;
+    
+    //this.isValidFormSubmitted = true;
     this.txtName = form.controls['uname'].value;
     this.txtCriteria = form.controls['criteria'].value;
     this.txtassociateid=form.controls['uassociateid'].value;
+    this.txtSkillName=form.controls['uskill'].value;
+
     console.log("name"+this.txtName); 
     console.log("criteria"+this.txtCriteria);   
-    console.log("associateid"+this.txtassociateid);    
-    this.searchSkill();
+    console.log("associateid"+this.txtassociateid); 
+    console.log("skill"+this.txtSkillName); 
+
+     
+    /*Validation part*/
+    if(this.txtCriteria=="NAME")
+    {
+      if(this.txtName == "")
+      {
+        form.controls['uname'].invalid;
+        alert("Name should not be blank");
+        this.isValidFormSubmitted = false;
+       
+      }
+    }
+    else if(this.txtCriteria=="ASSOCIATEID")
+    {
+      if(this.txtassociateid == "")
+      {
+        form.controls['uassociateid'].invalid;
+        alert("Associate Id should not be blank");
+        this.isValidFormSubmitted = false;
+        
+      }
+    }
+    else if(this.txtCriteria=="SKILL")
+    {
+      if(this.txtSkillName == "")
+      {
+        form.controls['uskill'].invalid;
+        alert("Associate Id should not be blank");
+        this.isValidFormSubmitted = false;
+        
+        alert("Select any skill");
+        this.isValidFormSubmitted = false;
+       // return false;
+      }
+    }
+    else
+    {
+       alert("Select any search criteria");
+        this.isValidFormSubmitted = false;
+       
+    }
+
+
+    if(this.isValidFormSubmitted == true)
+    {
+      this.searchSkill();
+    }
+    
+   
  }
 
   ngOnInit(): void {
@@ -59,10 +112,23 @@ export class SearchSkillComponent implements OnInit {
       this.searchName="ASSOCIATEID";
       this.searchValue=this.txtassociateid;
     }
+    else if(this.txtCriteria=="SKILL")
+    {
+      this.searchName=this.txtSkillName;
+      this.searchValue=this.txtSkillName;
+    }
     this.service.GetSkillList(this.searchName,this.searchValue).subscribe(data => this.userlist = data);  
+   
     console.log("userlist"); 
     console.log(this.userlist);  
 
+  }
+
+  resetForm()
+  {
+    this.txtSkillName="";
+    this.txtName="";
+    this.txtassociateid="";
   }
 
 }
