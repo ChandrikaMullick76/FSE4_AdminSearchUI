@@ -5,7 +5,7 @@
      
         <div class="form-group" >
                  
-            <input type="radio" value="NAME" name="criteria" [ngModel]="txtCriteria" required #criteria="ngModel"  > Name :
+            <input type="radio"  value="NAME" name="criteria" [ngModel]="txtCriteria" required #criteria="ngModel"  [checked]='true'   > Name :
         
             <input name="uname" [ngModel]="txtName" required #uname="ngModel" class="col-sm-6">
             
@@ -13,13 +13,13 @@
         </div>
         <div class="form-group">    
                          
-                <input type="radio" value="ASSOCIATEID" name="criteria" [ngModel]="txtCriteria" required #criteria="ngModel"> Associate Id :
+                <input type="radio" value="ASSOCIATEID" name="criteria" [ngModel]="txtCriteria" required #criteria="ngModel"  > Associate Id :
                 <input name="uassociateid" [ngModel]="txtassociateid" required #uassociateid="ngModel" class="col-sm-6">
                 
         </div>
         <div class="form-group">  
             <div >
-                <input type="radio" value="SKILL" name="criteria" [ngModel]="txtCriteria" required #criteria="ngModel" > Skill :
+                <input type="radio" value="SKILL" name="criteria" [ngModel]="txtCriteria" required #criteria="ngModel"   > Skill :
                 <select name="uskill" class="custom-select" [ngModel]="txtSkillName" required #uskill="ngModel" class="col-sm-6"  >
                     <option value="" disabled>Select Skill</option>
                     <option *ngFor="let skill of skills" [ngValue]="skill">{{skill}}</option>
@@ -27,8 +27,7 @@
             </div>
         </div>
         <input type="submit" value="Search" class="btn btn-primary col-sm-offset-3" />&nbsp;&nbsp;
-        <input type="reset" value="Reset" class="btn btn-primary col-sm-offset-3" ng-click="resetForm()" >
-      
+       
       </form> 
 <br/>
 </div>

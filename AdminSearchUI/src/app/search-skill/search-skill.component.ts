@@ -15,7 +15,8 @@ import { NgForm } from '@angular/forms';
 export class SearchSkillComponent implements OnInit {
   isValidFormSubmitted = false;
   public userlist: SearchAdmin[]; 
-  public testid:string="6";
+ public testid:string="6";
+  radioSelected:string;
   txtName:string='';
   txtCriteria:string='';
   txtassociateid:string='';
@@ -28,6 +29,7 @@ export class SearchSkillComponent implements OnInit {
   constructor(public http: HttpClient,public service : SearchAdminService,public fb: FormsModule) {    
     this.userlist = [];
     this.txtCriteria="NAME";
+    this.radioSelected="NAME";
   }
 
   onFormSubmit(form: NgForm) {
@@ -124,11 +126,14 @@ export class SearchSkillComponent implements OnInit {
 
   }
 
-  resetForm()
+  emptyValues(form: NgForm)
   {
-    this.txtSkillName="";
-    this.txtName="";
-    this.txtassociateid="";
+    alert("Test");
+   
+      form.reset;
+   
   }
+
+  
 
 }
