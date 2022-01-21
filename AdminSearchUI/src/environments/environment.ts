@@ -5,7 +5,8 @@
 export const environment = {
   production: false,
   //baseURL: 'http://localhost:32233/skill-tracker/api/v1/admin'
-  baseURL: 'https://adminuserskillsearchapi.azurewebsites.net/skill-tracker/api/v1/admin'
+  //baseURL: 'https://adminuserskillsearchapi.azurewebsites.net/skill-tracker/api/v1/admin'
+  baseURL:"https://skilltracker.azure-api.net/skill-tracker/api/v1/Admin"
 };
 
 /*

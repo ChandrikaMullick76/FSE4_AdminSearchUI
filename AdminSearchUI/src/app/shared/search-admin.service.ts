@@ -21,18 +21,18 @@ export class SearchAdminService {
   GetSkillList(name:string,value:string): Observable<any> {
     debugger;   
     console.log(this.baseURL+"/"+name+"/"+value);
-    //const options = this.PreparedOptions();
-    //return this.http.get<SearchAdmin[]>(this.baseURL+"/"+name+"/"+value,options);
-    return this.http.get<SearchAdmin[]>(this.baseURL+"/"+name+"/"+value);
+    const options = this.PreparedOptions();
+    return this.http.get<SearchAdmin[]>(this.baseURL+"/"+name+"/"+value,options);
+    //return this.http.get<SearchAdmin[]>(this.baseURL+"/"+name+"/"+value);
   }
 
   PreparedOptions():any{
 
     let headers=new HttpHeaders();
     headers=headers
-    .set('Content-Type','application/json')
-    .set('Authorization','Bearer')
-    .set("Ocp-Apim-Subscription-Key", 'bd2cf108-289e-4665-9d3c-91e91a66f126')
+    .set("Content-Type","application/json")
+    .set("Authorization", "BearerToken")
+    .set("Ocp-Apim-Subscription-Key", "779c5756edeb43c4884c38418fdf9ed9")
     ;
     return {headers};
   }
