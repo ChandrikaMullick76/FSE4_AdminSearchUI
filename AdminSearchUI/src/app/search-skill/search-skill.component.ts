@@ -126,12 +126,11 @@ export class SearchSkillComponent implements OnInit {
 
   }
 
-  emptyValues(form: NgForm)
-  {
-    alert("Test");
-   
-      form.reset;
-   
+  reset() {
+   // alert("Test4");
+    this.txtName="";
+    this.txtassociateid="";
+    this.txtSkillName="";
   }
 
   

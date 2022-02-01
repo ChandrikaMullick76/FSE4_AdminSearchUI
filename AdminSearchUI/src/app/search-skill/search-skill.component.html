@@ -5,22 +5,22 @@
      
         <div class="form-group" >
                  
-            <input type="radio"  value="NAME" name="criteria" [ngModel]="txtCriteria" required #criteria="ngModel"  [checked]='true'   > Name :
+            <input type="radio"  value="NAME" name="criteria" [ngModel]="txtCriteria" required #criteria="ngModel"  [checked]='true' (ngModelChange)="reset()"  > Name :
         
-            <input name="uname" [ngModel]="txtName" required #uname="ngModel" class="col-sm-6">
+            <input name="uname" [(ngModel)]="txtName" required #uname="ngModel" class="col-sm-6">
             
         
         </div>
         <div class="form-group">    
                          
-                <input type="radio" value="ASSOCIATEID" name="criteria" [ngModel]="txtCriteria" required #criteria="ngModel"  > Associate Id :
-                <input name="uassociateid" [ngModel]="txtassociateid" required #uassociateid="ngModel" class="col-sm-6">
+                <input type="radio" value="ASSOCIATEID" name="criteria" [ngModel]="txtCriteria" required #criteria="ngModel" (ngModelChange)="reset()"  > Associate Id :
+                <input name="uassociateid" [(ngModel)]="txtassociateid" required #uassociateid="ngModel" class="col-sm-6">
                 
         </div>
         <div class="form-group">  
             <div >
-                <input type="radio" value="SKILL" name="criteria" [ngModel]="txtCriteria" required #criteria="ngModel"   > Skill :
-                <select name="uskill" class="custom-select" [ngModel]="txtSkillName" required #uskill="ngModel" class="col-sm-6"  >
+                <input type="radio" value="SKILL" name="criteria" [ngModel]="txtCriteria" required #criteria="ngModel" (ngModelChange)="reset()"   > Skill :
+                <select name="uskill" class="custom-select" [(ngModel)]="txtSkillName" required #uskill="ngModel" class="col-sm-6"  >
                     <option value="" disabled>Select Skill</option>
                     <option *ngFor="let skill of skills" [ngValue]="skill">{{skill}}</option>
                  </select>
@@ -35,7 +35,7 @@
 
 <br/>
 
-<div class="content">
+<div class="content" *ngIf="userlist?.length;else no_data_templ">
     <table class="table table-bordered" width="800">
         <tr *ngFor="let user of userlist">
             <td [width]="300">
@@ -68,3 +68,6 @@
             
         </table>
     </div>
+    <ng-template #no_data_templ>
+        No records found...
+   </ng-template>
